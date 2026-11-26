@@ -1,46 +1,33 @@
-# 🏛️ EtherHeirloom Protocol
-**The Immutable Standard for Non-Custodial Digital Asset Succession.**
+# Ether-Heirloom
 
-EtherHeirloom is a decentralised, trustless protocol designed to solve the "dead wallet" problem. By leveraging the ERC-20 `allowance` mechanism, it allows asset owners to secure their digital legacy without ever surrendering custody of their private keys.
+**Non-custodial inheritance for ERC-20 tokens on Ethereum.** Choose your heirs, their shares and a date. Your tokens stay in your own wallet; after the date, each heir's share moves straight to that heir. No custody, no shared keys, no check-ins.
 
+🌐 [ether-heirloom.github.io](https://ether-heirloom.github.io) · 📄 [Whitepaper](https://ether-heirloom.github.io/Heirloom_Whitepaper_Version_1.0.pdf) · 🔐 [Security policy](https://github.com/EtherHeirloom/EtherHeirloom.sol/blob/main/SECURITY.md)
 
+## The problem
 
----
+With self-custody, nobody can recover your keys: not a bank, a court or a support team. The usual workarounds mean sharing a seed phrase with family or handing a key to a company.
 
-## 🔍 The Problem
-Approximately **20% of all circulating BTC and ETH** is estimated to be lost forever due to lost access or the death of owners. Traditional inheritance methods (notaries, shared seed phrases) are either incompatible with blockchain or introduce significant security risks.
+## How it works
 
-## 🛠️ Our Solution: "Succession via Proxy"
-EtherHeirloom decouples **ownership** from **succession intent**. 
-* **Non-Custodial:** Assets stay in your wallet. You grant the protocol permission to transfer them only if you stop being active.
-* **Contract is Law:** Fees and logic are hardcoded into the immutable smart contract. No governance, no backdoors.
-* **Virtual Pool Accounting:** A unique mathematical model that ensures fair share distribution even as your wallet balance fluctuates.
+1. **Set up a plan.** Name up to 10 heirs with exact shares and pick a date.
+2. **Approve the tokens to include.** The contract gets an ERC-20 allowance; the tokens never leave your wallet. Native ETH is included by wrapping it into WETH.
+3. **Stay in control.** Until the date you use your tokens as usual. Change heirs, move the date or revoke a token's approval at any time.
+4. **After the date,** anyone can trigger delivery, and each heir's share goes only to that heir. Tokens that reach your wallet after setup are covered too, and heirs can chain their own plans.
 
----
+It also runs as a **Safe App**, so a multisig or a company treasury can own the plan: open Safe → Apps → My custom apps → `https://ether-heirloom.github.io/`.
 
-## 🏗️ Technical Pillars
-- **Heartbeat Mechanism:** A unified "Dead Man's Switch" verified by the `resetDeadline` function.
-- **ERC-20 Focused:** Native support for the world's most liquid assets (USDC, USDT, WETH, LINK).
-- **Security First:** Built with OpenZeppelin standards, featuring ReentrancyGuard and SafeERC20.
-- **Gas Optimized:** Built-in pagination and batch claiming to handle complex legacy plans.
+## Contracts
 
----
+| Network | Address |
+|---|---|
+| Ethereum mainnet | [`0x0E0A916f469200318c9c6442038D45857ff41AE0`](https://etherscan.io/address/0x0e0a916f469200318c9c6442038d45857ff41ae0#code) (verified source) |
+| Sepolia testnet | [`0x2Db72e99E83005cA87CCd93F6FC1aa0C97a7Eb83`](https://sepolia.etherscan.io/address/0x2Db72e99E83005cA87CCd93F6FC1aa0C97a7Eb83) |
 
-## 📄 Documentation & Resources
-- **[Whitepaper](https://ether-heirloom.github.io//Heirloom_Whitepaper_Version_1.0.pdf):** Read our deep-dive into the protocol logic.
-- **[Official Website](https://ether-heirloom.github.io/):** Set up your legacy plan in less than 2 minutes.
-- **[Audit Reports](#):** (Coming Soon) Transparency is our core value.
+- No owner or admin functions, no pause, no upgrade proxy. Fees are fixed in the contract.
+- Open source: [EtherHeirloom.sol](https://github.com/EtherHeirloom/EtherHeirloom.sol), with the Foundry test suite run on every change.
+- Not yet independently audited. Please review the code before relying on it, and report issues privately as described in the [security policy](https://github.com/EtherHeirloom/EtherHeirloom.sol/blob/main/SECURITY.md).
 
----
+## Contact
 
-## 🤝 For Developers & Researchers
-We believe in the "Truth" of the code. We welcome peer reviews, security research, and contributions to the ecosystem.
-
-* **Language:** Solidity 0.8.24
-* **License:** BUSL-1.1 (Business Source License)
-* **Chain Compatibility:** Ethereum Mainnet, Gnosis Chain, Polygon, and EVM L2s.
-
-> *"In code we trust, but in logic we verify."*
-
----
-© 2025 EtherHeirloom Team. All fees are hardcoded. The protocol is autonomous.
+Partnerships and questions: **Ether-Heirloom@proton.me** · [X](https://x.com/EtherHeirloom) · [LinkedIn](https://www.linkedin.com/company/ether-heirloom)
